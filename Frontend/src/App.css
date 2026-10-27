@@ -1,0 +1,43 @@
+.app-shell {
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+.hero-section {
+  padding: 24px 0;
+}
+
+.hero-section h1 {
+  color: #172554;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.card {
+  border-radius: 14px;
+}
+
+.card-body {
+  min-width: 0;
+}
+
+.form-control,
+.form-select {
+  padding: 10px 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
+}
+
+.table {
+  font-size: 0.92rem;
+}
+
+.table th {
+  white-space: nowrap;
+}
+
+footer {
+  margin-top: 12px;
+}

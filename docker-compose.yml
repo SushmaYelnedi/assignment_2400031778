@@ -1,0 +1,39 @@
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: assignment-postgres
+    environment:
+      POSTGRES_DB: assignment_2400031778
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./CrudService
+    image: docker-backend-2400031778
+    container_name: assignment-backend
+    ports:
+      - "2001:2001"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/assignment_2400031778
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: admin123
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://host.docker.internal:8761/eureka/
+    depends_on:
+      - postgres
+
+  frontend:
+    build: ./Frontend
+    image: docker-frontend-2400031778
+    container_name: assignment-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
